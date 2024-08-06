@@ -60,6 +60,14 @@ public class Main {
             System.out.println(x);
         }
 
+        //Polymorphism (File: Animal.java)
+        Animal a = new Animal();
+        Animal b = new Dog();
+        a.sound();
+        System.out.println("Is the sound of: " + a.name);
+        b.sound();
+        System.out.println("Is the sound of: " + b.name);
+
     }
 
 }
