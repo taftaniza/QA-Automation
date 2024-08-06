@@ -15,7 +15,7 @@ public class Gear
 
     public static void main(String[] args){
         Gear a = new Gear();
-        a.setGear(5);
+        a.setGear(3);
         System.out.println("Current gear: "+ a.getGear());
     }
 
