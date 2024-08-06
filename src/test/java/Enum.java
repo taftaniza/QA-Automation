@@ -1,4 +1,4 @@
-public class Vehicle {
+public class Enum {
 
     enum Level {LOW, MEDIUM, HIGH}
 
