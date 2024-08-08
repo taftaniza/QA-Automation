@@ -1,22 +1,24 @@
 public class Animal {
-    String name="Cat";
-
 
     public void sound(){
-        System.out.println("Meow meow");
+        System.out.println("Animal sound");
     }
 }
 
 //Inheritance
-class Cat extends Animal{
-    public static void main (String[] args){
-        Cat a = new Cat();
-        a.sound();
-        System.out.println("Is the sound of: " + a.name);
+class Title extends Animal{
+    public static void main(String[] args) {
+        Title x = new Title();
+        x.sound();
     }
 }
 
 // Polymorphism
+class Cat extends Animal{
+    public void sound(){
+        System.out.println("Meow Meow");
+    }
+}
 class Dog extends Animal{
     public void sound(){
         System.out.println("Guk Guk");

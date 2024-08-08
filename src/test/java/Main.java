@@ -1,5 +1,9 @@
 public class Main {
 
+    public String testAc(String name){
+         return name;
+    }
+
     public static void main(String[] args)
     {
         //If-else
@@ -60,13 +64,6 @@ public class Main {
             System.out.println(x);
         }
 
-        //Polymorphism (File: Animal.java)
-        Animal a = new Animal();
-        Animal b = new Dog();
-        a.sound();
-        System.out.println("Is the sound of: " + a.name);
-        b.sound();
-        System.out.println("Is the sound of: " + b.name);
 
     }
 
