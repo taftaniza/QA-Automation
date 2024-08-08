@@ -40,8 +40,19 @@ public class Practical1
             Practical1 a = new Practical1();
             a.Triangle(height);
         }
-        else{
-            System.out.println("done");
+        else if(choice==2){
+            System.out.println("Enter the edges of the square: ");
+        }
+        else if(choice==3){
+            System.out.println("Enter the length of the rectangle: ");
+            System.out.println("Enter the width of the rectangle: ");
+        }
+        else if(choice==4){
+            System.exit(0);
+        }
+        else {
+            System.out.println("Your option not recognised");
+
         }
     }
 }
