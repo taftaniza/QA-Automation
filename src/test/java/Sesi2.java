@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Practical1
+public class Sesi2
 {
     public int value;
 
@@ -56,14 +56,14 @@ public class Practical1
             System.out.println("Enter the height of the triangle: ");
             int height = input.nextInt();
             System.out.println("Enter the height of the triangle: "+ height);
-            Practical1 a = new Practical1();
+            Sesi2 a = new Sesi2();
             a.Triangle(height);
         }
         else if(choice==2){
             System.out.println("Enter the edge of the square: ");
             int edge = input.nextInt();
             System.out.println("Enter the edge of the square: "+ edge);
-            Practical1 b = new Practical1();
+            Sesi2 b = new Sesi2();
             b.Square(edge);
         }
         else if(choice==3){
@@ -73,7 +73,7 @@ public class Practical1
             int width = input.nextInt();
             System.out.println("length: "+ length);
             System.out.println("width: "+ width);
-            Practical1 c = new Practical1();
+            Sesi2 c = new Sesi2();
             c.Rectangle(length, width);
 
         }
