@@ -20,7 +20,7 @@ class Car extends Vehicle {
 }
 
 class Motorcycle extends Vehicle {
-    String motorColor= "Black";
+    String motorColor= "Black and White";
 
     @Override
     public String vehicleSound(){

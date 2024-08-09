@@ -2,10 +2,9 @@ import java.util.Scanner;
 
 public class Sesi2
 {
-    public int value;
+
 
     public void Triangle (int height){
-        this.value=height;
 
         for(int i = 1; i<=height; i++){
             for(int j = i; j<height; j++){
@@ -19,7 +18,7 @@ public class Sesi2
     }
 
     public void Square(int edge){
-        this.value=edge;
+
         for (int i = 1; i <= edge; i++) {
             for (int j = 1; j <= edge; j++) {
                 System.out.print("*");
@@ -52,36 +51,36 @@ public class Sesi2
         int choice = input.nextInt();
         System.out.println("Enter your choice: " + choice);
 
-        if (choice == 1) {
-            System.out.println("Enter the height of the triangle: ");
-            int height = input.nextInt();
-            System.out.println("Enter the height of the triangle: "+ height);
-            Sesi2 a = new Sesi2();
-            a.Triangle(height);
-        }
-        else if(choice==2){
-            System.out.println("Enter the edge of the square: ");
-            int edge = input.nextInt();
-            System.out.println("Enter the edge of the square: "+ edge);
-            Sesi2 b = new Sesi2();
-            b.Square(edge);
-        }
-        else if(choice==3){
-            System.out.println("Enter the length of the rectangle: ");
-            int length = input.nextInt();
-            System.out.println("Enter the width of the rectangle: ");
-            int width = input.nextInt();
-            System.out.println("length: "+ length);
-            System.out.println("width: "+ width);
-            Sesi2 c = new Sesi2();
-            c.Rectangle(length, width);
+        switch (choice){
+            case 1:
+                System.out.println("Enter the height of the triangle: ");
+                int height = input.nextInt();
+                System.out.println("Enter the height of the triangle: "+ height);
+                Sesi2 a = new Sesi2();
+                a.Triangle(height);
 
-        }
-        else if(choice==4){
-            System.exit(0);
-        }
-        else {
-            System.out.println("Your option not recognised");
+            case 2:
+                System.out.println("Enter the edge of the square: ");
+                int edge = input.nextInt();
+                System.out.println("Enter the edge of the square: "+ edge);
+                Sesi2 b = new Sesi2();
+                b.Square(edge);
+
+            case 3:
+                System.out.println("Enter the length of the rectangle: ");
+                int length = input.nextInt();
+                System.out.println("Enter the width of the rectangle: ");
+                int width = input.nextInt();
+                System.out.println("length: "+ length);
+                System.out.println("width: "+ width);
+                Sesi2 c = new Sesi2();
+                c.Rectangle(length, width);
+
+            case 4:
+                System.exit(0);
+
+            default:
+                System.out.println("Your option not in the list");
 
         }
     }
