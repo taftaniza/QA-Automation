@@ -1,44 +1,82 @@
+//Sesi 3's Answer
+
+import java.time.Year;
+
+// Base class Vehicle
 public class Vehicle {
-    String brand= "Vehicle";
-    String model= "Pajero";
-    int year= 2024;
+    String brand;
+    String model;
+    int year;
 
-    public String vehicleSound(){
-        return "Vehicle Sound";
+   public Vehicle(String brand, String model, int year) throws InvalidYearException {
+       this.brand = brand;
+       this.model = model;
+       this.year = year;
+
+        int currentYear = Year.now().getValue();
+
+        if (year > currentYear) {
+            throw new InvalidYearException("Year shouldn't be more than the current year");
+        }
+    }
+
+    public String vehicleSound() {
+
+        return "Vehicle sound";
+
     }
 }
 
-//Polymorphism
-class Car extends Vehicle {
-    String carBrand="Hyundai";
+//Polymorphism:
+
+// Subclass Car
+class Car extends Vehicle{
+    String carBrand;
+
+    // Constructor for Car
+    public Car(String brand, String model, int year, String carBrand) throws InvalidYearException {
+        super(brand, model, year);  // Call the constructor of the superclass Vehicle
+        this.carBrand = carBrand;
+    }
+
 
     @Override
-    public String vehicleSound(){
-
-        return "Car sounds";
+    public String vehicleSound() {
+        return "Broom broom car";
     }
 }
 
+// Subclass Motorcycle
 class Motorcycle extends Vehicle {
-    String motorColor= "Black and White";
+    String motorColor;
 
-    @Override
-    public String vehicleSound(){
-        return "Motorcycle sounds";
+    // Constructor for Motorcycle
+    public Motorcycle(String brand, String model, int year, String motorColor) throws InvalidYearException {
+        super(brand, model, year);  // Call the constructor of the superclass Vehicle
+        this.motorColor = motorColor;
     }
 
+    @Override
+    public String vehicleSound() {
+        return "Vroom Vroom motorcycle";
+    }
 }
 
-class Main{
+// Main class to demonstrate polymorphism
+class Main {
+
     public static void main(String[] args) {
-        Vehicle a = new Vehicle();
-        Vehicle b = new Car();
-        Vehicle c = new Motorcycle();
+        try {
+            Vehicle myVehicle = new Vehicle("Generic", "Model X", 2023);
+            Vehicle a = new Car("Toyota", "Corolla", 2024, "Toyota");
+            Vehicle b = new Motorcycle("Honda", "CBR", 2025, "Red");
 
+            System.out.println(myVehicle.vehicleSound());
+            System.out.println(a.vehicleSound());
+            System.out.println(b.vehicleSound());
 
-        System.out.println(a.vehicleSound());
-        System.out.println(b.vehicleSound());
-        System.out.println(c.vehicleSound());
-
+        } catch (InvalidYearException e) {
+            System.out.println("Exception: " + e.getMessage());
+        }
     }
 }
