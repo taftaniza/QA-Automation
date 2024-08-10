@@ -1,3 +1,5 @@
+package Sesi2;
+
 import java.util.Scanner;
 
 public class Sesi2
