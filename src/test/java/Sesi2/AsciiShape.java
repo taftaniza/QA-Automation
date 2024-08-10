@@ -2,7 +2,7 @@ package Sesi2;
 
 import java.util.Scanner;
 
-public class Sesi2
+public class AsciiShape
 {
 
 
@@ -58,14 +58,14 @@ public class Sesi2
                 System.out.println("Enter the height of the triangle: ");
                 int height = input.nextInt();
                 System.out.println("Enter the height of the triangle: "+ height);
-                Sesi2 a = new Sesi2();
+                AsciiShape a = new AsciiShape();
                 a.Triangle(height);
 
             case 2:
                 System.out.println("Enter the edge of the square: ");
                 int edge = input.nextInt();
                 System.out.println("Enter the edge of the square: "+ edge);
-                Sesi2 b = new Sesi2();
+                AsciiShape b = new AsciiShape();
                 b.Square(edge);
 
             case 3:
@@ -75,7 +75,7 @@ public class Sesi2
                 int width = input.nextInt();
                 System.out.println("length: "+ length);
                 System.out.println("width: "+ width);
-                Sesi2 c = new Sesi2();
+                AsciiShape c = new AsciiShape();
                 c.Rectangle(length, width);
 
             case 4:
