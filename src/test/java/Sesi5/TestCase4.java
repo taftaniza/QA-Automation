@@ -1,4 +1,4 @@
-//Login with incorrect email and password
+//Logout User
 
 package Sesi5;
 
@@ -7,8 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.*;
 
-public class TestCase3 {
-
+public class TestCase4 {
     public static void main(String[] args) {
 
         WebDriver driver = new ChromeDriver();
@@ -28,7 +27,9 @@ public class TestCase3 {
         passwordLogin.sendKeys("12345");
         buttonLogin.click();
 
-        driver.quit();
+        // Logout Account:
+        WebElement logout = driver.findElement(By.linkText("Logout"));
+        logout.click();
 
     }
 }

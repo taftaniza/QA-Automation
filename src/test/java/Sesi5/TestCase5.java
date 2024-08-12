@@ -1,4 +1,4 @@
-//Login with incorrect email and password
+//Register User with Existing account
 
 package Sesi5;
 
@@ -7,10 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.*;
 
-public class TestCase3 {
-
+public class TestCase5 {
     public static void main(String[] args) {
-
         WebDriver driver = new ChromeDriver();
         String baseUrl= "https://automationexercise.com/";
         driver.get(baseUrl);
@@ -19,14 +17,14 @@ public class TestCase3 {
         WebElement login = driver.findElement(By.linkText("Signup / Login"));
         login.click();
 
-        //Fill the field at login page
-        WebElement email = driver.findElement(By.xpath("//input[@name='email']"));
-        WebElement passwordLogin = driver.findElement(By.xpath("//input[@name='password']"));
-        WebElement buttonLogin = driver.findElement(By.xpath("//button[@type='submit']"));
+        // Fill Signup
+        WebElement name = driver.findElement(By.cssSelector("input[name='name'"));
+        name.sendKeys("lovely");
+        WebElement emailSignup = driver.findElement(By.xpath("//input[@name='email' and @data-qa='signup-email']"));
+        emailSignup.sendKeys("lovely@gmail.com");
 
-        email.sendKeys("radot@gmail.com");
-        passwordLogin.sendKeys("12345");
-        buttonLogin.click();
+        WebElement buttonSignup = driver.findElement(By.xpath("//button[@type='submit' and @data-qa='signup-button']"));
+        buttonSignup.click();
 
         driver.quit();
 
