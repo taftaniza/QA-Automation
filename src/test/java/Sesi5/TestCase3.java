@@ -1,4 +1,4 @@
-//Login User with Correct User and Password
+//Login with incorrect email and password
 
 package Sesi5;
 
@@ -7,9 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.*;
 
-import java.time.Duration;
-
-public class TestCase2 {
+public class TestCase3 {
 
     public static void main(String[] args) {
 
@@ -30,10 +28,5 @@ public class TestCase2 {
         passwordLogin.sendKeys("12345");
         buttonLogin.click();
 
-        // Delete Account:
-        WebElement del = driver.findElement(By.linkText("Delete Account"));
-        del.click();
-        WebElement con2 = driver.findElement(By.linkText("Continue"));
-        con2.click();
     }
 }
