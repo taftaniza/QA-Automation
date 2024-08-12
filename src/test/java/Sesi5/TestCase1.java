@@ -53,6 +53,17 @@ public class TestCase1 {
         WebElement year = driver.findElement(By.id("years"));
         year.sendKeys("2003");
 
+        // Check the checkbox
+        WebElement newsletterCheckbox = driver.findElement(By.name("newsletter"));
+        if (!newsletterCheckbox.isSelected()) {
+            newsletterCheckbox.click();
+        }
+
+        WebElement offersCheckbox = driver.findElement(By.name("optin"));
+        if (!offersCheckbox.isSelected()) {
+            offersCheckbox.click();
+        }
+
         //Address Information Section:
         WebElement fName = driver.findElement(By.id("first_name"));
         fName.sendKeys("John");
