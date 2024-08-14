@@ -1,11 +1,14 @@
-//Add Products in Cart
 package Sesi5;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class TestCase12 {
     public static void main(String[] args) {
@@ -14,35 +17,44 @@ public class TestCase12 {
 
         // Declaration and instantiation of objects/variable ChromeDriver
         WebDriver driver = new ChromeDriver();
-        String baseUrl= "https://automationexercise.com/";
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Adding WebDriverWait
+        Actions actions = new Actions(driver);
+
+        String baseUrl = "https://automationexercise.com/";
         driver.get(baseUrl);
 
-
-        WebElement productsLink = driver.findElement(By.cssSelector("a[href='/products']"));
+        // Navigate to the 'Products' page
+        WebElement productsLink = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='/products']")));
         productsLink.click();
 
+        // Hover over the product to trigger the overlay
+        WebElement product = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.product-overlay")));
+        actions.moveToElement(product).perform(); // Hover over the product
 
-        WebElement add1 = driver.findElement(By.cssSelector("a[data-product-id='1'].btn.btn-default.add-to-cart"));
-        add1.click();
+        // Click the 'Add to Cart' button within the overlay
+        WebElement addToCartButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.overlay-content a[data-product-id='1']")));
+        addToCartButton.click();
 
-        // Click 'Continue Shopping' button on the modal that appears
-        WebElement btnContinueShopping = driver.findElement(By.cssSelector("button.btn.btn-success.close-modal"));
+        //Click 'Continue Shopping' button on the modal that appears
+        WebElement btnContinueShopping = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.btn.btn-success.close-modal.btn-block")));
         btnContinueShopping.click();
 
+        // Hover over the product to trigger the overlay
+        WebElement product2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.product-overlay")));
+        actions.moveToElement(product2).perform(); // Hover over the product
+
         // Add second product to the cart
-        WebElement add2 = driver.findElement(By.xpath("//a[@data-product-id='3']"));
+        WebElement add2 = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.overlay-content a[data-product-id='3']")));
         add2.click();
 
         // Click 'View Cart' link
-        WebElement seeCart = driver.findElement(By.cssSelector("a[href='/view_cart']"));
+        WebElement seeCart = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='/view_cart']")));
         seeCart.click();
 
         // Print a success message
         System.out.println("Both products have been added to the cart");
 
-        // Close the browser
-        driver.quit();
+//        // Close the browser
+//        driver.quit();
     }
 }
-
-
