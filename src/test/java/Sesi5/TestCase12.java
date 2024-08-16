@@ -12,49 +12,68 @@ import java.time.Duration;
 
 public class TestCase12 {
     public static void main(String[] args) {
-        // Set the path to the chromedriver executable
+
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\tafta\\chromedriver-win64\\chromedriver.exe");
 
-        // Declaration and instantiation of objects/variable ChromeDriver
         WebDriver driver = new ChromeDriver();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Adding WebDriverWait
-        Actions actions = new Actions(driver);
+        Actions actions = new Actions(driver); // Actions for hovering
 
         String baseUrl = "https://automationexercise.com/";
         driver.get(baseUrl);
 
-        // Navigate to the 'Products' page
         WebElement productsLink = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='/products']")));
         productsLink.click();
 
         // Hover over the product to trigger the overlay
-        WebElement product = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.product-overlay")));
-        actions.moveToElement(product).perform(); // Hover over the product
+        WebElement hover = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.product-overlay")));
+        actions.moveToElement(hover).perform(); // Hover over the product
 
-        // Click the 'Add to Cart' button within the overlay
+
         WebElement addToCartButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.overlay-content a[data-product-id='1']")));
         addToCartButton.click();
 
-        //Click 'Continue Shopping' button on the modal that appears
-        WebElement btnContinueShopping = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button.btn.btn-success.close-modal.btn-block")));
-        btnContinueShopping.click();
+        WebElement btnContinue = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='btn btn-success close-modal btn-block']")));
+        btnContinue.click();
 
-        // Hover over the product to trigger the overlay
-        WebElement product2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.product-overlay")));
-        actions.moveToElement(product2).perform(); // Hover over the product
 
-        // Add second product to the cart
-        WebElement add2 = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.overlay-content a[data-product-id='3']")));
-        add2.click();
+        System.out.println("1 product added to cart");
 
-        // Click 'View Cart' link
-        WebElement seeCart = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='/view_cart']")));
-        seeCart.click();
+        // Hover over the 2nd product to trigger the overlay
+        WebElement hover2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.product-overlay ")));
+        actions.moveToElement(hover2).perform(); // Hover over the product
 
-        // Print a success message
-        System.out.println("Both products have been added to the cart");
 
-//        // Close the browser
-//        driver.quit();
+        WebElement addToCartButton2 = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.overlay-content a[data-product-id='1']")));
+        addToCartButton2.click();
+
+        System.out.println("2nd product added to cart");
+
+        WebElement viewCart = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("View Cart")));
+        viewCart.click();
+
+        //Get value from cart
+        WebElement product = driver.findElement(By.xpath("//td[@class='cart_description']//h4//a"));
+        WebElement price = driver.findElement(By.xpath("//td[@class='cart_price']//p"));
+        //WebElement qty = driver.findElement(By.xpath("//td[@class='cart_total']//button"));
+
+
+        // Retrieve the text and print it
+        String productText = product.getText();
+        String priceText = price.getText();
+        //String qtyText = qty.getText();
+        System.out.println("Product name: " + productText);
+        System.out.println("Product price: " + priceText);
+        //System.out.println("Product qty: " + qtyText);
+
+
+
+
+
+
+
+
+        // Close the browser
+        //driver.quit();
     }
 }
