@@ -20,29 +20,28 @@ public class TestCase14 {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\tafta\\chromedriver-win64\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
 
-        //2. Navigate to url 'http://automationexercise.com'
-        String baseUrl="https://automationexercise.com/";
+        // 2. Navigate to url 'http://automationexercise.com'
+        String baseUrl = "https://automationexercise.com/";
         driver.get(baseUrl);
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Adding WebDriverWait
+        Actions actions = new Actions(driver); // Create an instance of the Actions class
 
+        // 3. Verify that home page is visible successfully
+        System.out.println("Homepage is visible successfully");
 
-        Actions actions = new Actions(driver);//Create an instance of the Actions class
-
-        //3. Verify that home page is visible successfully
-        System.out.println("Homepage is visible successfuly");
 
         //4. Add products to cart
-
-        // i)Hover over the product to trigger the overlay
+        //Go to Products menu first:
+        WebElement productsLink = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='/products']")));
+        productsLink.click();
+        // Hover over the product to trigger the overlay
         WebElement hover = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.product-overlay")));
         actions.moveToElement(hover).perform(); // Hover over the product
 
-        // ii)Click add product from hover
-        WebElement addToCartButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='overlay-content']//a[@data-product-id='1']")));
+        WebElement addToCartButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("div.overlay-content a[data-product-id='1']")));
         addToCartButton.click();
 
-        // iii) Click continue
         WebElement btnContinue = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='btn btn-success close-modal btn-block']")));
         btnContinue.click();
 
