@@ -73,6 +73,12 @@ public class TestCase14 {
         WebElement buttonSignup = driver.findElement(By.xpath("//button[@type='submit' and @data-qa='signup-button']"));
         buttonSignup.click();
 
+        WebElement mrsRadioButton = driver.findElement(By.id("uniform-id_gender2"));
+        mrsRadioButton.click();
+
+        WebElement passSignup = driver.findElement(By.xpath("//input[@id='password' and @data-qa='password']"));
+        passSignup.sendKeys("12345");
+
         //Address Information Section:
         WebElement fName = driver.findElement(By.id("first_name"));
         fName.sendKeys("John");

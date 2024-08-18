@@ -22,6 +22,7 @@ public class TestCase1 {
         String baseUrl= "https://automationexercise.com/";
         driver.get(baseUrl);
 
+
         // Get the Web Element corresponding to the Signup/Login page:
         WebElement login = driver.findElement(By.linkText("Signup / Login"));
         login.click();
@@ -35,10 +36,6 @@ public class TestCase1 {
 
         WebElement buttonSignup = driver.findElement(By.xpath("//button[@type='submit' and @data-qa='signup-button']"));
         buttonSignup.click();
-
-
-        //Account Information:
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         WebElement mrsRadioButton = driver.findElement(By.id("uniform-id_gender2"));
         mrsRadioButton.click();

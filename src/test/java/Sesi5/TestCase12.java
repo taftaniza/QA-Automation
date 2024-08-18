@@ -66,13 +66,6 @@ public class TestCase12 {
         System.out.println("Product price: " + priceText);
 
 
-
-
-
-
-
-
-
         // Close the browser
         //driver.quit();
     }
