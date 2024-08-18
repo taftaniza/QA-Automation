@@ -55,16 +55,16 @@ public class TestCase12 {
         //Get value from cart
         WebElement product = driver.findElement(By.xpath("//td[@class='cart_description']//h4//a"));
         WebElement price = driver.findElement(By.xpath("//td[@class='cart_price']//p"));
-        //WebElement qty = driver.findElement(By.xpath("//td[@class='cart_total']//button"));
+
 
 
         // Retrieve the text and print it
         String productText = product.getText();
         String priceText = price.getText();
-        //String qtyText = qty.getText();
+
         System.out.println("Product name: " + productText);
         System.out.println("Product price: " + priceText);
-        //System.out.println("Product qty: " + qtyText);
+
 
 
 
