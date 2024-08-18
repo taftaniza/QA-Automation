@@ -89,6 +89,9 @@ public class TestCase15 {
         System.out.println("Logged as: " + user);
 
         // 8. Add products to cart
+        //Go to Products menu first:
+        WebElement productsLink = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='/products']")));
+        productsLink.click();
         // Hover over the product to trigger the overlay
         WebElement hover = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.product-overlay")));
         actions.moveToElement(hover).perform(); // Hover over the product
