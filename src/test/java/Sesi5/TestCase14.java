@@ -65,9 +65,9 @@ public class TestCase14 {
         //9. Fill all details in Signup and create account
         //i)Fill Signup
         WebElement name = driver.findElement(By.cssSelector("input[name='name'"));
-        name.sendKeys("Hai");
+        name.sendKeys("Dot");
         WebElement emailSignup = driver.findElement(By.xpath("//input[@name='email' and @data-qa='signup-email']"));
-        emailSignup.sendKeys("hai@gmail.com");
+        emailSignup.sendKeys("dot@gmail.com");
 
         WebElement buttonSignup = driver.findElement(By.xpath("//button[@type='submit' and @data-qa='signup-button']"));
         buttonSignup.click();
