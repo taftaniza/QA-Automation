@@ -48,8 +48,8 @@ public class TestCase16 {
         String user = username.getText();
         System.out.println("Logged as: " + user);
 
-        //7. Add products to cart
 
+        //7. Add products to cart
         WebElement productsLink = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href='/products']")));
         productsLink.click();
 
@@ -63,7 +63,6 @@ public class TestCase16 {
 
         WebElement btnContinue = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='btn btn-success close-modal btn-block']")));
         btnContinue.click();
-
 
         System.out.println("1 product added to cart");
 
@@ -131,8 +130,8 @@ public class TestCase16 {
         //16. Click 'Delete Account' button
 //        WebElement del = driver.findElement(By.linkText("Delete Account"));
 //        del.click();
-//
-//        //17. Verify 'ACCOUNT DELETED!' and click 'Continue' button
+
+        //17. Verify 'ACCOUNT DELETED!' and click 'Continue' button
 //        WebElement con2 = driver.findElement(By.linkText("Continue"));
 //        con2.click();
 
