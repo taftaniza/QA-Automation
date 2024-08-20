@@ -45,7 +45,7 @@ public class TestCase18 {
 
         //8. Verify that user is navigated to that category page
         WebElement displaying2 = driver.findElement(By.xpath("//div[@class='features_items']//h2"));
-        String dsp2 = displaying.getText();
+        String dsp2 = displaying2.getText();
         System.out.println("Selected Category: "+ dsp2);
 
     }
