@@ -5,6 +5,7 @@ package Sesi5;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -39,6 +40,13 @@ public class TestCase2 {
 
         // Click on "Continue" after deleting the account
         driver.findElement(By.linkText("Continue")).click();
+    }
+
+    @AfterClass
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();  // Close the browser and end the session
+        }
     }
 
 }
