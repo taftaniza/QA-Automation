@@ -33,8 +33,8 @@ public class TestCase1 {
             public void signUp() {
 
         // Fill Signup
-        driver.findElement(By.cssSelector("input[name='name'")).sendKeys("Hai");
-        driver.findElement(By.xpath("//input[@name='email' and @data-qa='signup-email']")).sendKeys("hai@gmail.com");
+        driver.findElement(By.cssSelector("input[name='name'")).sendKeys("Melati");
+        driver.findElement(By.xpath("//input[@name='email' and @data-qa='signup-email']")).sendKeys("melati@gmail.com");
         driver.findElement(By.xpath("//button[@type='submit' and @data-qa='signup-button']")).click();
 
     }
