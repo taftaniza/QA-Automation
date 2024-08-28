@@ -8,53 +8,58 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 
 public class TestCase13 {
 
-    public static void main(String[] args) {
+        WebDriver driver;
+        WebDriverWait wait;
 
-        System.setProperty("webdriver.chrome.driver","C:\\Users\\tafta\\chromedriver-win64\\chromedriver.exe");
+        @BeforeClass
+                public void setUp() {
+            driver = new ChromeDriver();
+            wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            driver.get("https://automationexercise.com/");
+            driver.manage().window().maximize();
+        }
 
-        WebDriver driver = new ChromeDriver();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        String baseUrl = "https://automationexercise.com/";
-        driver.get(baseUrl);
+        @Test(priority = 1)
+            public void clickProduct() {
+            // Verify that home page is visible successfully
+            System.out.println("Homepage is visible successfuly");
+            driver.findElement(By.xpath("//a[@href='/product_details/1']")).click();
+        }
 
-        // Verify that home page is visible successfully
-        System.out.println("Homepage is visible successfuly");
+        @Test(priority = 2)
+            public void addQuantity() {
+            //Increase quantity to 4
+            WebElement inc_qty = driver.findElement(By.xpath("//input[@type='number' and @name='quantity']"));
+            inc_qty.clear(); //have to clear first bcs the field has a value that already set to '1'
+            inc_qty.sendKeys("4");
 
-        WebElement viewProd = driver.findElement(By.xpath("//a[@href='/product_details/1']"));
-        viewProd.click();
+            //Click 'Add to cart' button
+            driver.findElement(By.xpath("//button[@type='button' and @class='btn btn-default cart']")).click();
 
-        //Increase quantity to 4
-        WebElement inc_qty = driver.findElement(By.xpath("//input[@type='number' and @name='quantity']"));
-        inc_qty.clear(); //have to clear first bcs the field has a value that already set to '1'
-        inc_qty.sendKeys("4");
+            //Click 'View Cart' button
+            wait.until(ExpectedConditions.elementToBeClickable(By.linkText("View Cart"))).click();
+        }
 
-        //Click 'Add to cart' button
-        WebElement cart_btn = driver.findElement(By.xpath("//button[@type='button' and @class='btn btn-default cart']"));
-        cart_btn.click();
+        @Test(priority = 3)
+            public void cart(){
+            //Verify that product is displayed in cart page with exact quantity
+            String prod_name = driver.findElement(By.xpath("//td[@class='cart_description']//h4")).getText();
+            String qty_prod = driver.findElement(By.xpath("//td[@class='cart_quantity']//button")).getText();
+            System.out.println("Product : " + prod_name);
+            System.out.println("Quantity : " + qty_prod);
+        }
 
-        //Click 'View Cart' button
-        WebElement viewCart = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("View Cart")));
-        viewCart.click();
+        @AfterClass
+            public void tearDown() {
+            driver.quit();
+        }
 
-        //Verify that product is displayed in cart page with exact quantity
-        WebElement product= driver.findElement(By.xpath("//td[@class='cart_description']//h4"));
-        WebElement qty= driver.findElement(By.xpath("//td[@class='cart_quantity']//button"));
-        String prod_name = product.getText();
-        String qty_prod = qty.getText();
-        System.out.println("Product : " + prod_name);
-        System.out.println("Quantity : " + qty_prod);
-
-
-
-
-
-
-
-
-    }
 }
