@@ -28,7 +28,7 @@ public class TestCase2 {
         driver.findElement(By.linkText("Signup / Login")).click();
 
         // Fill in the login credentials
-        driver.findElement(By.xpath("//input[@name='email']")).sendKeys("melati@gmail.com");
+        driver.findElement(By.xpath("//input[@name='email']")).sendKeys("hai@gmail.com");
         driver.findElement(By.xpath("//input[@name='password']")).sendKeys("12345");
         driver.findElement(By.xpath("//button[@type='submit']")).click();
     }
