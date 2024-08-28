@@ -1,6 +1,7 @@
 // Search Products and Verify Cart After Login
 package Sesi5;
 
+import org.checkerframework.checker.units.qual.A;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,61 +9,67 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.List;
 
 public class TestCase20 {
+        WebDriver driver;
+        WebDriverWait wait;
+        Actions actions;
 
-    public static void main(String[] args) {
+        @BeforeClass
+                public void setUp() {
+            driver = new ChromeDriver();
+            wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            actions = new Actions(driver);
 
-        //1. Launch browser
-        System.setProperty("webdriver.chrome.driver","C:\\Users\\tafta\\chromedriver-win64\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
+            //2. Navigate to url 'http://automationexercise.com'
+            String baseURL = "https://automationexercise.com/";
+            driver.get(baseURL);
+            driver.manage().window().maximize();
+        }
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        Actions actions = new Actions(driver);
+        @Test(priority = 1)
+                public void goToProd() {
 
-        //2. Navigate to url 'http://automationexercise.com'
-        String baseURL = "https://automationexercise.com/";
-        driver.get(baseURL);
+            //3. Click on 'Products' button
+            driver.findElement(By.cssSelector("a[href='/products']")).click();
 
-        //3. Click on 'Products' button
-        WebElement products = driver.findElement(By.cssSelector("a[href='/products']"));
-        products.click();
+            //4. Verify user is navigated to ALL PRODUCTS page successfully
+            System.out.println("Navigated to ALL PRODUCTS page successfully");
+        }
 
-        //4. Verify user is navigated to ALL PRODUCTS page successfully
-        System.out.println("Navigated to ALL PRODUCTS page successfully");
+        @Test(priority = 2)
+                public void prodSearch() {
+            //5. Enter product name in search input and click search button
+            driver.findElement(By.cssSelector("input[name='search']")).sendKeys("Dress");
 
+            driver.findElement(By.id("submit_search")).click();
 
-        //5. Enter product name in search input and click search button
-        WebElement inputProd = driver.findElement(By.cssSelector("input[name='search']"));
-        inputProd.sendKeys("Dress");
+            //6. Verify 'SEARCHED PRODUCTS' is visible
+            System.out.println("Searched product is visible");
 
-        WebElement searchBtn = driver.findElement(By.id("submit_search"));
-        searchBtn.click();
+            //7. Verify all the products related to search are visible
+            String prod = driver.findElement(By.cssSelector("input[name='search']")).getText();
+            System.out.println("All the product related to " + prod + " is displayed");
+        }
 
-        //6. Verify 'SEARCHED PRODUCTS' is visible
-        System.out.println("Searched product is visible");
-
-        //7. Verify all the products related to search are visible
-        WebElement product = driver.findElement(By.cssSelector("input[name='search']"));
-        String prod = product.getText();
-        System.out.println("All the product related to "+prod+" is displayed");
-
+        @Test(priority = 3)
+                public void addProd() {
 
         //8. Add those products to cart
         WebElement overlay = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.product-overlay")));
         actions.moveToElement(overlay).perform();
 
-        WebElement addProd = driver.findElement(By.xpath("//div[@class='overlay-content'] //a[@data-product-id='3']"));
-        addProd.click();
-
+        driver.findElement(By.xpath("//div[@class='overlay-content'] //a[@data-product-id='3']")).click();
         System.out.println("1 Product added successfully");
 
         //9. Click 'Cart' button and verify that products are visible in cart
-        WebElement viewCart = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("View Cart")));
-        viewCart.click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.linkText("View Cart"))).click();
 
         System.out.println("Current product:");
 
@@ -78,18 +85,19 @@ public class TestCase20 {
         //10. Click 'Signup / Login' button and submit login details
         WebElement login = driver.findElement(By.linkText("Signup / Login"));
         login.click();
+    }
 
-        WebElement email = driver.findElement(By.xpath("//input[@name='email']"));
-        WebElement passwordLogin = driver.findElement(By.xpath("//input[@name='password']"));
-        WebElement buttonLogin = driver.findElement(By.xpath("//button[@type='submit']"));
+    @Test(priority = 4)
+    public void login() {
+        driver.findElement(By.xpath("//input[@name='email']")).sendKeys("dots@gmail.com");
+        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("12345");
+        driver.findElement(By.xpath("//button[@type='submit']")).click();
+    }
 
-        email.sendKeys("hai@gmail.com");
-        passwordLogin.sendKeys("12345");
-        buttonLogin.click();
-
+    @Test(priority = 5)
+            public void cart() {
         //11. Again, go to Cart page
-        WebElement cartbtn = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Cart")));
-        cartbtn.click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Cart"))).click();
 
         //12. Verify that those products are visible in cart after login as well
         System.out.println("Products are visible in cart after login");
@@ -103,5 +111,10 @@ public class TestCase20 {
         for (WebElement detail : cartDetails2) {
             System.out.println(detail.getText());
         }
+    }
+
+    @AfterClass
+    public void close(){
+            driver.close();
     }
 }
