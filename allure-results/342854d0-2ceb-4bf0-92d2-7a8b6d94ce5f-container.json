@@ -1,0 +1,1 @@
+{"uuid":"342854d0-2ceb-4bf0-92d2-7a8b6d94ce5f","name":"Sesi5.TestCase2","children":["bdc10fd8-d789-437b-89df-ee9756e27071"],"befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1724810638596,"stop":1724810652385}],"afters":[],"start":1724810638467,"stop":1724810731225}
