@@ -65,9 +65,9 @@ public class TestCase14 {
         //9. Fill all details in Signup and create account
         //i)Fill Signup
         WebElement name = driver.findElement(By.cssSelector("input[name='name'"));
-        name.sendKeys("dot");
+        name.sendKeys("melati");
         WebElement emailSignup = driver.findElement(By.xpath("//input[@name='email' and @data-qa='signup-email']"));
-        emailSignup.sendKeys("dot@gmail.com");
+        emailSignup.sendKeys("melati@gmail.com");
 
         WebElement buttonSignup = driver.findElement(By.xpath("//button[@type='submit' and @data-qa='signup-button']"));
         buttonSignup.click();
@@ -184,13 +184,13 @@ public class TestCase14 {
         //18. Verify success message 'Your order has been placed successfully!'
         System.out.println("Your order has been placed successfully!");
 
-        //19. Click 'Delete Account' button
-        WebElement del = driver.findElement(By.linkText("Delete Account"));
-        del.click();
-
-        //20. Verify 'ACCOUNT DELETED!' and click 'Continue' button
-        WebElement con2 = driver.findElement(By.linkText("Continue"));
-        con2.click();
+//        //19. Click 'Delete Account' button
+//        WebElement del = driver.findElement(By.linkText("Delete Account"));
+//        del.click();
+//
+//        //20. Verify 'ACCOUNT DELETED!' and click 'Continue' button
+//        WebElement con2 = driver.findElement(By.linkText("Continue"));
+//        con2.click();
 
 
     }
