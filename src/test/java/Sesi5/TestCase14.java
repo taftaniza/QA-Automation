@@ -43,8 +43,7 @@ public class TestCase14 {
         }
 
         @Test(priority = 2)
-                public void addProduct() {
-
+        public void addProduct() {
             // Hover over the product to trigger the overlay
             WebElement hover = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.product-overlay")));
             actions.moveToElement(hover).perform(); // Hover over the product
@@ -80,8 +79,8 @@ public class TestCase14 {
         public void regist() {
             //9. Fill all details in Signup and create account
             //i)Fill Signup
-            driver.findElement(By.cssSelector("input[name='name'")).sendKeys("hi");
-            driver.findElement(By.xpath("//input[@name='email' and @data-qa='signup-email']")).sendKeys("hi@gmail.com");
+            driver.findElement(By.cssSelector("input[name='name'")).sendKeys("Linda");
+            driver.findElement(By.xpath("//input[@name='email' and @data-qa='signup-email']")).sendKeys("linda@gmail.com");
 
             driver.findElement(By.xpath("//button[@type='submit' and @data-qa='signup-button']")).click();
 

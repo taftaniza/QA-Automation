@@ -44,8 +44,8 @@ public class TestCase15 {
         @Test(priority = 2)
                 public void signUp() {
             // 5. Fill all details in Signup and create account
-            driver.findElement(By.cssSelector("input[name='name']")).sendKeys("dots");
-            driver.findElement(By.xpath("//input[@name='email' and @data-qa='signup-email']")).sendKeys("dots@gmail.com");
+            driver.findElement(By.cssSelector("input[name='name']")).sendKeys("Lenny");
+            driver.findElement(By.xpath("//input[@name='email' and @data-qa='signup-email']")).sendKeys("lenny@gmail.com");
 
             driver.findElement(By.xpath("//button[@type='submit' and @data-qa='signup-button']")).click();
         }
