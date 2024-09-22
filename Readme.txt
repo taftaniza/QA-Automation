@@ -1,12 +1,27 @@
 ------------How to run the program-----------------
-1. Clone this link in your desire path on your laptop ( https://github.com/taftaniza/QA-Automation/new/selenium-practice )
-2. Open the project your IDE.
+1. Clone this link in your desired path on your laptop ( https://github.com/taftaniza/QA-Automation/new/selenium-practice )
+2. Open the project to your IDE.
 3. Run the program in the file SeleniumTest.java ---> (src/test/java/com/automation/SeleniumTest.java)
 
 -----------How to run Allure Report----------------
-1. In your IDE, open terminal (make sure the path in on the project's path)
-2. Run:
-  #1 '''mvn clean test'''
-  #2 Run the test case
-  #3 '''allure serve''' 
+
+**Open Terminal**:
+   - In your IDE, open the terminal (make sure the path is on the project's path)
+
+   **Run the installation command**:
+   - Execute the following command:
+
+  #1
+     ```
+     mvn clean test
+     ```
+
+--- After that, run the code on the SeleniumTes.java
+--- Next, execute:
+
+  #2
+     ```
+     allure serve
+     ```
+   This command runs allure report for the testing.
 
