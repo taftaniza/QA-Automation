@@ -1,0 +1,186 @@
+### Tools Installation Guide for run the program ###
+--- Available for Windows and MAC OS ---
+
+WINDOWS' GUIDE:
+
+1. Maven Installation
+To install Maven on Windows, follow these steps:
+
+### 1. **Download Maven**:
+   - Go to the official Maven website: [https://maven.apache.org/download.cgi](https://maven.apache.org/download.cgi).
+   - Download the binary zip archive (e.g., `apache-maven-3.x.x-bin.zip`).
+
+### 2. **Extract Maven**:
+   - After downloading the zip file, extract it to a directory where you want Maven to be installed (e.g., `C:\Program Files\Apache\Maven`).
+
+### 3. **Configure Environment Variables**:
+   You need to set up environment variables so that you can use Maven from the command line.
+
+   **Steps**:
+   1. Right-click on **This PC** or **Computer** and select **Properties**.
+   2. Click on **Advanced system settings**.
+   3. In the **System Properties** window, click on the **Environment Variables** button.
+   4. Under **System Variables**, click **New** to add a new system variable:
+      - **Variable name**: `MAVEN_HOME`
+      - **Variable value**: The path where you extracted Maven (e.g., `C:\Program Files\Apache\Maven\apache-maven-3.x.x`).
+
+   5. Edit the **Path** variable:
+      - In the **System Variables** section, find and select the `Path` variable, then click **Edit**.
+      - Add the Maven `bin` directory path to the `Path` (e.g., `C:\Program Files\Apache\Maven\apache-maven-3.x.x\bin`).
+      - Click **OK** to save the changes.
+
+### 4. **Verify Maven Installation**:
+   1. Open a new command prompt (this ensures that the updated environment variables are loaded).
+   2. Type the following command to verify Maven is installed correctly:
+      ```bash
+      mvn -version
+      ```
+
+   If everything is set up correctly, you should see Maven's version and other system information.
+
+Now Maven is installed and ready to use on your Windows system!
+
+
+2. Allure Installation
+To install Allure on Windows, follow these steps:
+
+    ! You need a package manager like **Scoop** or **Chocolatey** to install Allure easily. !
+
+                                    (here I am using Scoop)
+
+Scoop will manage the installation of the software and add it to your system path, making it easy to use from the command line.
+
+### 1. **Install Scoop** (if not already installed):
+1. **Open PowerShell**:
+   - Open PowerShell with administrator privileges (right-click on the PowerShell icon and select **Run as Administrator**).
+
+   **Run the installation command**:
+   - Execute the following command to install Scoop:
+     ```
+     iwr -useb get.scoop.sh | iex
+     ```
+   This command downloads and runs the installation script for Scoop.
+
+### **Verify Scoop Installation**:
+   Once the installation is complete, verify that Scoop is installed by typing:
+   ```
+   scoop --version
+   ```
+This should display the version of Scoop, confirming that it has been installed successfully.
+
+
+Allure Installation with Scoop:
+
+If the **Scoop** already installed:
+1. Open PowerShell (or Command Prompt).
+2. Run the following command to install Allure:
+   ```
+   scoop install allure
+   ```
+
+### 2. **Verify Allure Installation**:
+After installing Allure, you can verify it by running the following command in a new command prompt:
+```
+allure --version
+```
+You should see the installed version of Allure displayed.
+
+----------------------------------------------------------------THE END--------------------------------------------------------------------------------------------
+
+MAC OS'S GUIDE:
+
+1. Maven Installation
+To install Maven on macOS, you can follow one of these methods:
+      1. **Homebrew** (recommended), 
+      2. **Manual Installation**, or 
+      3. using a **package manager**.
+
+### Method 1: Install Maven via Homebrew (Recommended)
+
+1. **Install Homebrew** (if not already installed):
+   - If you don’t have Homebrew, you can install it by running this command in your terminal:
+     ```bash
+     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+     ```
+
+2. **Install Maven using Homebrew**:
+   - Once Homebrew is installed, simply run:
+     ```bash
+     brew install maven
+     ```
+
+3. **Verify Maven installation**:
+   - After installation, verify that Maven is installed correctly by running:
+     ```bash
+     mvn -version
+     ```
+
+   This command should display the Maven version, Java version, and other system information.
+
+---
+That's it! Maven should now be installed and configured on your macOS.
+
+
+2. Allure Installation
+To install Allure on macOS, you can use **Homebrew** (recommended) or **manual installation**. Here are the steps for both methods:
+
+### Method 1: Install Allure via Homebrew (Recommended)
+
+1. **Install Homebrew** (if not already installed):
+   - If Homebrew is not installed, you can install it by running the following command in your terminal:
+     ```bash
+     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+     ```
+
+2. **Install Allure with Homebrew**:
+   - Once Homebrew is installed, you can install Allure by running this command:
+     ```bash
+     brew install allure
+     ```
+
+3. **Verify the Allure installation**:
+   - After the installation completes, verify it by running:
+     ```bash
+     allure --version
+     ```
+
+   You should see the installed version of Allure displayed.
+
+---
+
+### Method 2: Manual Installation of Allure
+
+1. **Download Allure**:
+   - Go to the [Allure release page](https://github.com/allure-framework/allure2/releases) and download the latest `.zip` file (e.g., `allure-2.x.x.zip`).
+
+2. **Extract Allure**:
+   - Extract the downloaded `.zip` file to a folder of your choice, for example:
+     ```bash
+     unzip allure-2.x.x.zip -d /usr/local/allure
+     ```
+
+3. **Add Allure to the system PATH**:
+   - To use Allure from the terminal, you need to add its `bin` directory to your system's `PATH`.
+   - Open your terminal and edit your shell configuration file (`.bash_profile`, `.zshrc`, or `.bashrc`) using a text editor:
+     ```bash
+     nano ~/.zshrc  # or ~/.bash_profile if you're using bash
+     ```
+
+   - Add the following line to the file:
+     ```bash
+     export PATH=$PATH:/usr/local/allure/bin
+     ```
+
+4. **Apply the changes**:
+   - After adding the line, save the file and reload the profile by running:
+     ```bash
+     source ~/.zshrc  # or source ~/.bash_profile
+     ```
+
+5. **Verify the installation**:
+   - Run the following command to check if Allure is installed properly:
+     ```bash
+     allure --version
+     ```
+                         
+-------------------------------------------------------------------THE END-----------------------------------------------------------------------
