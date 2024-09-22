@@ -1,7 +1,12 @@
 ------------How to run the program-----------------
-1. Clone this link in your desired path on your laptop ( https://github.com/taftaniza/QA-Automation/new/selenium-practice )
+1. Clone this link in your desired path on your laptop
+---> < git clone -b selenium-practice https://github.com/taftaniza/QA-Automation.git >
+
 2. Open the project to your IDE.
+
 3. Run the program in the file SeleniumTest.java ---> (src/test/java/com/automation/SeleniumTest.java)
+
+
 
 -----------How to run Allure Report----------------
 
